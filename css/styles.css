@@ -75,10 +75,11 @@ body {
     font-size: 44px;
     line-height: 1.3;
     letter-spacing: 0.06em;
+    text-transform: uppercase;
 }
 /* Преимущества */
 .advantage {
-    background-color: var(--basic-bcg);
+    background-color: #ffffff;
 }
 .advantage-title {
     color: var(--title-color);
@@ -163,17 +164,25 @@ body {
     letter-spacing: 0.03em;
 }
 /* Кнопки */
-.button {
+.button.hero {
     color: #ffffff;
     background-color: var(--button-active-color);
     font-family: inherit;
     font-weight: 700;
+    padding: 10px 32px;
 }
 .button.portfolio {
     color: var(--button-color);
     background-color: var(--button-portfolio-bcg);
+    font-family: inherit;
     font-weight: 500;
 }
 .button.active {
+    color: #ffffff;
+    background-color: var(--button-active-color);
     font-weight: 500;
+}
+.button:hover,
+.button:focus {
+    color: #188ce8;
 }
