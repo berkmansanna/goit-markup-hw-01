@@ -61,12 +61,17 @@ body {
     color: var(--logo-footer-sec);
 }
 /* Навигация сайта */
+.icon-header {
+    fill: currentColor;
+    margin-right: 10px;
+}
 .links {
     font-weight: 500;
     font-size: 14px;
     line-height: 1.1;
     letter-spacing: 0.02em;
-    display: block;
+    display: flex;
+    align-items: center;
     padding-top: 32px;
     padding-bottom: 32px;
 }
@@ -99,8 +104,18 @@ body {
 /* Герой */
 .hero {
     background-color: #2f303a;
+    background-image: linear-gradient(
+            to right,
+            rgba(47, 48, 58, 0.4),
+            rgba(47, 48, 58, 0.4)
+        ),
+        url(../img/hero-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     padding: 200px 0;
-    min-width: 1400px;
+    max-width: 1600px;
+    height: 600px;
     margin: 0 auto;
 }
 .hero-title {
@@ -116,6 +131,19 @@ body {
     margin-bottom: 30px;
 }
 /* Преимущества */
+.icon-conteiner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f4fa;
+    height: 120px;
+    margin-bottom: 30px;
+    border-radius: 4px;
+}
+.icon-advantage {
+    width: 70px;
+    height: 70px;
+}
 .advantage.section {
     background-color: #ffffff;
     padding-bottom: 0;
@@ -158,7 +186,8 @@ body {
     background-color: #f5f4fa;
 }
 .team-title,
-.example {
+.example,
+.clients-title {
     color: var(--title-color);
     font-weight: 700;
     font-size: 36px;
@@ -182,8 +211,41 @@ body {
     line-height: 1.2;
     text-align: center;
     letter-spacing: 0.03em;
-    padding-bottom: 30px;
+    margin-bottom: 16px;
 }
+
+.social-block {
+    margin: 16px 32px 30px 32px;
+}
+.social-list {
+    display: flex;
+    justify-content: space-between;
+}
+.social-item {
+    display: flex;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+}
+.social-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    fill: #afb1b8;
+}
+.link-icon {
+    width: 20px;
+    height: 20px;
+}
+.social-link:hover,
+.social-link:focus {
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    fill: #ffffff;
+}
+
 .flex-team {
     display: flex;
     justify-content: space-between;
@@ -197,12 +259,46 @@ body {
 .flex-post:last-child {
     margin-right: 0;
 }
+/* Клиенты */
+.clients-list {
+    display: flex;
+}
+.clients-item {
+    display: flex;
+    width: 170px;
+    height: 92px;
+}
+.clients-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #afb1b8;
+    border: 1px solid;
+    border-radius: 4px;
+    width: 100%;
+    height: 100%;
+}
+.clients-icon {
+    display: flex;
+    width: 106p;
+    height: 60px;
+    fill: currentColor;
+}
+.clients-item + .clients-item {
+    margin-left: 30px;
+}
+.clients-link:hover,
+.clients-link:focus {
+    color: var(--accent-color);
+}
+
 /* Подвал */
 .footer {
     background-color: var(--footer-bcg);
 }
 .footer-logo {
     display: block;
+
     padding-top: 60px;
     padding-bottom: 20px;
 }
@@ -231,11 +327,52 @@ body {
 .link:hover {
     color: var(--accent-color);
 }
+.footer-flex {
+    display: flex;
+}
 
 .footer-item + .footer-item {
     padding-top: 9px;
 }
-
+.footer-link-conteiner {
+    margin-top: 72px;
+    margin-left: 70px;
+}
+.footer-text {
+    display: flex;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 1.1;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+.footer-social-list {
+    display: flex;
+}
+.footer-link-icon {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    fill: #ffffff;
+}
+.footer-social-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+}
+.footer-social-item:hover,
+.footer-social-item:focus {
+    background-color: var(--accent-color);
+}
+.footer-social-item + .footer-social-item {
+    margin-left: 10px;
+}
 /* Портфолио */
 .portfolio {
     background-color: var(--basic-bcg);
@@ -271,6 +408,10 @@ body {
     letter-spacing: 0.03em;
     padding: 0 24px 20px;
 }
+.project:hover {
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+        1px 4px 6px rgba(0, 0, 0, 0.16);
+}
 /* Кнопки */
 .button {
     border-radius: 4px;
@@ -278,6 +419,7 @@ body {
 .button.hero {
     color: #ffffff;
     background-color: var(--button-active-color);
+    background-image: none;
     font-family: inherit;
     font-weight: 700;
     min-width: 200px;
