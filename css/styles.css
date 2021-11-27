@@ -12,14 +12,19 @@
     --button-color: #212121;
     --button-active-color: #2196f3;
     --button-portfolio-bcg: #f5f4fa;
+    --hover-animation: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    --animation: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 body {
-    color: var(--contents-color);
     font-family: 'Roboto', sans-serif;
+
+    color: var(--contents-color);
 }
 .header {
-    background-color: var(--header-bcg);
     border-bottom: 1px solid #ececec;
+
+    background-color: var(--header-bcg);
 }
 /* Шапка */
 .flex-conteiner,
@@ -45,14 +50,16 @@ body {
 /* Лого */
 .logo-link,
 .logo-link:focus {
-    color: var(--accent-color);
+    display: block;
+    padding-top: 24px;
+    padding-bottom: 25px;
+
     font-family: 'Raleway', sans-serif;
     font-weight: 700;
     font-size: 26px;
     line-height: 1.1em;
-    display: block;
-    padding-top: 24px;
-    padding-bottom: 25px;
+
+    color: var(--accent-color);
 }
 .logo-header-sec {
     color: var(--logo-header-sec);
@@ -62,25 +69,39 @@ body {
 }
 /* Навигация сайта */
 .icon-header {
-    fill: currentColor;
     margin-right: 10px;
+    fill: currentColor;
 }
 .links {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.1;
-    letter-spacing: 0.02em;
     display: flex;
     align-items: center;
     padding-top: 32px;
     padding-bottom: 32px;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
 }
 .site-nav .link {
+    transition: color var(--hover-animation);
+
     color: var(--title-color);
 }
 
 .site-nav .link.current {
     color: var(--accent-color);
+}
+.item {
+    position: relative;
+}
+.current::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    border: solid #2196f3;
+    border-radius: 2px;
+    bottom: 0;
 }
 
 .site-nav,
@@ -92,6 +113,8 @@ body {
 /* Контакты шапки */
 
 .contacts .link {
+    transition: color var(--hover-animation);
+
     color: var(--contents-color);
 }
 
@@ -103,6 +126,11 @@ body {
 
 /* Герой */
 .hero {
+    padding: 200px 0;
+    max-width: 1600px;
+    height: 600px;
+    margin: 0 auto;
+
     background-color: #2f303a;
     background-image: linear-gradient(
             to right,
@@ -113,12 +141,11 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    padding: 200px 0;
-    max-width: 1600px;
-    height: 600px;
-    margin: 0 auto;
 }
 .hero-title {
+    margin: 0 auto;
+    margin-bottom: 30px;
+
     color: #ffffff;
     font-weight: 900;
     font-size: 44px;
@@ -127,35 +154,38 @@ body {
     text-transform: uppercase;
     max-width: 650px;
     text-align: center;
-    margin: 0 auto;
-    margin-bottom: 30px;
 }
+
 /* Преимущества */
 .icon-conteiner {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f5f4fa;
     height: 120px;
     margin-bottom: 30px;
     border-radius: 4px;
+
+    background-color: #f5f4fa;
 }
 .icon-advantage {
     width: 70px;
     height: 70px;
 }
 .advantage.section {
-    background-color: #ffffff;
     padding-bottom: 0;
+
+    background-color: #ffffff;
 }
 .advantage-title {
-    color: var(--title-color);
+    margin-bottom: 10px;
+
     font-weight: 700;
     font-size: 14px;
     line-height: 1.1;
     letter-spacing: 0.03em;
     text-transform: uppercase;
-    margin-bottom: 10px;
+
+    color: var(--title-color);
 }
 .flex-adv {
     display: flex;
@@ -174,12 +204,35 @@ body {
     line-height: 1.7;
     letter-spacing: 0.03em;
 }
+/* Специфика работы */
 .flex-example {
     display: flex;
 }
 
 .flex-img:not(:last-child) {
     margin-right: 30px;
+}
+.example-img {
+    position: relative;
+    width: 370px;
+    height: 294px;
+}
+.example-title {
+    position: absolute;
+    padding-top: 27px;
+    left: 0;
+    bottom: 0;
+    width: 370px;
+    height: 70px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.1;
+    text-align: center;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+
+    color: #ffffff;
+    background-color: rgba(47, 48, 58, 0.8);
 }
 /* Наша команда */
 .team {
@@ -188,30 +241,35 @@ body {
 .team-title,
 .example,
 .clients-title {
-    color: var(--title-color);
+    padding-bottom: 50px;
+
     font-weight: 700;
     font-size: 36px;
     line-height: 1.2;
     text-align: center;
     letter-spacing: 0.03em;
-    padding-bottom: 50px;
+
+    color: var(--title-color);
 }
 .team-name {
-    color: var(--title-color);
+    padding-top: 30px;
+    padding-bottom: 10px;
+
     font-weight: 500;
     font-size: 16px;
     line-height: 1.2;
     text-align: center;
     letter-spacing: 0.03em;
-    padding-top: 30px;
-    padding-bottom: 10px;
+
+    color: var(--title-color);
 }
 .post {
+    margin-bottom: 16px;
+
     font-size: 16px;
     line-height: 1.2;
     text-align: center;
     letter-spacing: 0.03em;
-    margin-bottom: 16px;
 }
 
 .social-block {
@@ -231,9 +289,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 50%;
     width: 100%;
     height: 100%;
+
     fill: #afb1b8;
+
+    transition: background-color var(--hover-animation),
+        fill var(--hover-animation), border-radius var(--hover-animation);
 }
 .link-icon {
     width: 20px;
@@ -265,6 +328,7 @@ body {
 }
 .clients-item {
     display: flex;
+
     width: 170px;
     height: 92px;
 }
@@ -272,11 +336,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #afb1b8;
     border: 1px solid;
     border-radius: 4px;
     width: 100%;
     height: 100%;
+
+    color: #afb1b8;
+
+    transition: color var(--hover-animation);
 }
 .clients-icon {
     display: flex;
@@ -306,22 +373,28 @@ body {
     padding-bottom: 60px;
 }
 .footer-contacts .map-link {
-    color: #ffffff;
     font-style: normal;
     font-size: 14px;
     line-height: 1.7;
     letter-spacing: 0.03em;
+
+    color: #ffffff;
+
+    transition: color var(--hover-animation);
 }
 .footer-contacts .map-link:hover,
 .map-link:focus {
     color: var(--accent-color);
 }
 .footer-contacts .link {
-    color: #ffffff99;
     font-style: normal;
     font-size: 14px;
     line-height: 1.7;
     letter-spacing: 0.03em;
+
+    color: #ffffff99;
+
+    transition: color var(--hover-animation);
 }
 .link:focus,
 .link:hover {
@@ -340,13 +413,15 @@ body {
 }
 .footer-text {
     display: flex;
-    font-weight: bold;
+    margin-bottom: 20px;
+
+    font-weight: 700;
     font-size: 14px;
     line-height: 1.1;
     letter-spacing: 0.03em;
     text-transform: uppercase;
+
     color: #ffffff;
-    margin-bottom: 20px;
 }
 .footer-social-list {
     display: flex;
@@ -355,27 +430,66 @@ body {
     display: flex;
     width: 20px;
     height: 20px;
+
     fill: #ffffff;
 }
-.footer-social-item {
+.footer-social-link {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+
+    transition: background-color var(--hover-animation);
+}
+.footer-social-item {
     border-radius: 50%;
     width: 44px;
     height: 44px;
+
+    background-color: rgba(255, 255, 255, 0.1);
 }
-.footer-social-item:hover,
-.footer-social-item:focus {
+.footer-social-link:hover,
+.footer-social-link:focus {
     background-color: var(--accent-color);
 }
+
 .footer-social-item + .footer-social-item {
     margin-left: 10px;
 }
 /* Портфолио */
 .portfolio {
     background-color: var(--basic-bcg);
+}
+.overlay {
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 63px 24px;
+    min-height: 100%;
+    height: calc(100%-30px);
+    overflow-y: auto;
+
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+
+    color: #ffffff;
+    background-color: rgba(33, 150, 243, 0.9);
+
+    transform: translateY(101%);
+    transition: var(--animation);
+}
+.project-link:hover .overlay-text,
+.project-link:hover {
+    /* opacity: 1; */
+    transform: translateY(0);
 }
 .flex-conteiner {
     display: flex;
@@ -395,21 +509,26 @@ body {
     margin-bottom: 0;
 }
 .filters-title {
-    color: var(--title-color);
+    padding: 20px 24px 4px;
+
     font-weight: 700;
     font-size: 18px;
     line-height: 2;
     letter-spacing: 0.06em;
-    padding: 20px 24px 4px;
+
+    color: var(--title-color);
 }
 .filters-type {
+    padding: 0 24px 20px;
+
     font-size: 16px;
     line-height: 1.9;
     letter-spacing: 0.03em;
-    padding: 0 24px 20px;
 }
 .project-link {
     display: block;
+
+    transition: box-shadow var(--hover-animation);
 }
 .project-link:hover {
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
@@ -420,29 +539,41 @@ body {
     border-radius: 4px;
 }
 .button.hero {
-    color: #ffffff;
-    background-color: var(--button-active-color);
-    background-image: none;
+    padding: 10px 32px;
+    margin: 0 auto;
+
     font-family: inherit;
     font-weight: 700;
     min-width: 200px;
     height: 50px;
     display: block;
-    padding: 10px 32px;
-    margin: 0 auto;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-}
-.button.portfolio {
-    color: var(--button-color);
-    background-color: var(--button-portfolio-bcg);
-    font-family: inherit;
-    font-weight: 500;
-    padding: 6px 22px;
-}
-.button.active {
+
     color: #ffffff;
     background-color: var(--button-active-color);
+    background-image: none;
+
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    transition: var(--hover-animation);
+}
+.button.portfolio {
+    padding: 6px 22px;
+
+    font-family: inherit;
     font-weight: 500;
+    font-size: 16px;
+    line-height: 1.6;
+
+    color: var(--button-color);
+    background-color: var(--button-portfolio-bcg);
+
+    transition: color var(--hover-animation),
+        background-color var(--hover-animation);
+}
+.button.active {
+    font-weight: 500;
+
+    color: #ffffff;
+    background-color: var(--button-active-color);
 }
 .button:hover,
 .button:focus {
@@ -467,4 +598,57 @@ body {
 }
 .list-padding {
     padding-bottom: 50px;
+}
+/* -------Модальное окно---------- */
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(0, 0, 0, 0.2);
+
+    transition: var(--animation), visibility var(--hover-animation);
+}
+.backdrop.is-hidden .modal {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-width: 528px;
+    width: calc(100% - 30px);
+    max-height: 581px;
+    height: calc(100% - 30px);
+    padding: 40px;
+    border-radius: 4px;
+
+    background-color: #ffffff;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+        0px 2px 1px rgba(0, 0, 0, 0.2);
+
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform var(--hover-animation);
+}
+.modal-close {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+
+    background-color: #ffffff;
+}
+.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
 }
