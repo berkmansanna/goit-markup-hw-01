@@ -16,6 +16,11 @@ button {
 input {
     outline: none;
 }
+
+textarea {
+    resize: none;
+}
+
 img {
     width: 100%;
     display: block;
